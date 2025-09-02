@@ -1,4 +1,4 @@
-import { Armchair, Award, Bed, ChefHat, Facebook, House, Instagram, Mail, MapPin, MoveLeft, MoveRight, Phone, Send, Shield, ShoppingBag, Star, Truck, Twitter, User, Youtube } from 'lucide-react';
+import { Armchair, Award, Bed, ChefHat, Facebook, Heart, House, Instagram, Mail, MapPin, MoveLeft, MoveRight, Phone, Send, Shield, ShoppingBag, ShoppingCart, Star, Tags, Truck, Twitter, User, Youtube } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react'
 import SofaImage from '../assets/Images/SofaImage.jpg'
 import hall from '../assets/Images/hall.jpg'
@@ -167,7 +167,7 @@ const LandingPage = () => {
                 <section className="categories-section">
                     <div className="container">
                         <div className="section-header">
-                            <h2>Shop by <span className="gradient-text">Category</span></h2>
+                            <h2>Shop by <span className="luxury-text">Category</span></h2>
                             <p>Discover our curated furniture collections designed for every room in your home</p>
                         </div>
 
@@ -240,7 +240,7 @@ const LandingPage = () => {
                         <div className="products-grid">
                             <div className="product-card">
                                 <div className="sale-badge">
-                                    <i className="fas fa-tags"></i> Sale
+                                    <Tags /> Sale
                                 </div>
                                 <div className="product-image">
                                     <img src={sofa} alt="Modern Sectional Sofa" />
@@ -252,12 +252,12 @@ const LandingPage = () => {
                                         <div>
                                             <h3>Modern Sectional Sofa</h3>
                                             <div className="rating">
-                                                <i className="fas fa-star"></i>
+                                                <Star />
                                                 <span>4.8 (234)</span>
                                             </div>
                                         </div>
                                         <button className="wishlist-btn">
-                                            <i className="far fa-heart"></i>
+                                            <Heart />
                                         </button>
                                     </div>
                                     <div className="product-footer">
@@ -266,7 +266,7 @@ const LandingPage = () => {
                                             <span className="original-price">$1699</span>
                                         </div>
                                         <button className="btn btn-primary">
-                                            <i className="fas fa-shopping-cart"></i> Add to Cart
+                                            <ShoppingCart /> Add to Cart
                                         </button>
                                     </div>
                                 </div>
@@ -274,7 +274,7 @@ const LandingPage = () => {
 
                             <div className="product-card">
                                 <div className="sale-badge">
-                                    <i className="fas fa-tags"></i> Sale
+                                    <Tags /> Sale
                                 </div>
                                 <div className="product-image">
                                     <img src={dining} alt="Oak Dining Set" />
@@ -286,12 +286,12 @@ const LandingPage = () => {
                                         <div>
                                             <h3>Oak Dining Set</h3>
                                             <div className="rating">
-                                                <i className="fas fa-star"></i>
+                                                <Star />
                                                 <span>4.9 (156)</span>
                                             </div>
                                         </div>
                                         <button className="wishlist-btn">
-                                            <i className="far fa-heart"></i>
+                                            <Heart />
                                         </button>
                                     </div>
                                     <div className="product-footer">
@@ -300,7 +300,7 @@ const LandingPage = () => {
                                             <span className="original-price">$1199</span>
                                         </div>
                                         <button className="btn btn-primary">
-                                            <i className="fas fa-shopping-cart"></i> Add to Cart
+                                            <ShoppingCart /> Add to Cart
                                         </button>
                                     </div>
                                 </div>
@@ -317,12 +317,12 @@ const LandingPage = () => {
                                         <div>
                                             <h3>Luxury King Bed</h3>
                                             <div className="rating">
-                                                <i className="fas fa-star"></i>
+                                                <Star />
                                                 <span>4.7 (89)</span>
                                             </div>
                                         </div>
                                         <button className="wishlist-btn">
-                                            <i className="far fa-heart"></i>
+                                            <Heart />
                                         </button>
                                     </div>
                                     <div className="product-footer">
@@ -330,7 +330,7 @@ const LandingPage = () => {
                                             <span className="current-price">$1499</span>
                                         </div>
                                         <button className="btn btn-primary">
-                                            <i className="fas fa-shopping-cart"></i> Add to Cart
+                                            <ShoppingCart /> Add to Cart
                                         </button>
                                     </div>
                                 </div>
@@ -339,7 +339,7 @@ const LandingPage = () => {
 
                         <div className="section-footer">
                             <button className="btn btn-primary">
-                                View All Best Sellers <i className="fas fa-arrow-right"></i>
+                                View All Best Sellers <MoveRight />
                             </button>
                         </div>
                     </div>
@@ -365,7 +365,7 @@ const LandingPage = () => {
                                 <div className="collection-content">
                                     <p>Comfortable sofas, chairs, and tables for relaxing spaces</p>
                                     <button className="btn btn-primary">
-                                        Shop Living Room <i className="fas fa-arrow-right"></i>
+                                        Shop Living Room <MoveRight />
                                     </button>
                                 </div>
                             </div>
@@ -382,7 +382,7 @@ const LandingPage = () => {
                                 <div className="collection-content">
                                     <p>Complete bedroom sets and individual pieces for restful sleep</p>
                                     <button className="btn btn-primary">
-                                        Shop Bedroom <i className="fas fa-arrow-right"></i>
+                                        Shop Bedroom <MoveRight />
                                     </button>
                                 </div>
                             </div>
@@ -399,7 +399,7 @@ const LandingPage = () => {
                                 <div className="collection-content">
                                     <p>Dining tables, chairs, and kitchen storage solutions</p>
                                     <button className="btn btn-primary">
-                                        Shop Kitchen & Dining <i className="fas fa-arrow-right"></i>
+                                        Shop Kitchen & Dining <MoveRight />
                                     </button>
                                 </div>
                             </div>
@@ -429,7 +429,7 @@ const LandingPage = () => {
                         </div>
 
                         <button className="btn btn-sale">
-                            <i className="fas fa-tags"></i> Shop Sale Items
+                            <Tags /> Shop Sale Items
                         </button>
                     </div>
                 </section>
@@ -437,7 +437,7 @@ const LandingPage = () => {
                 <section id="feedback" className="feedback-section">
                     <div className="container">
                         <div className="section-header">
-                            <h2>What Our <span className="gradient-text">Customers</span> Say</h2>
+                            <h2>What Our <span className="luxury-text">Customers</span> Say</h2>
                             <p>Read testimonials from our satisfied customers who transformed their homes</p>
                         </div>
 
