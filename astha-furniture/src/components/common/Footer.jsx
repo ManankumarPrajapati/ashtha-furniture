@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
 import React from 'react'
+import logoImg from '../../assets/Images/asthaLogo.svg'
 
 const Footer = () => {
     return (
@@ -8,10 +9,7 @@ const Footer = () => {
                 <div className="footer-content">
                     <div className="footer-section">
                         <div className="footer-brand">
-                            <div className="brand-text">
-                                <h3>astha</h3>
-                                <p>Furniture Studio</p>
-                            </div>
+                            <img src={logoImg} alt="astha" style={{ height: '75px' }} />
                         </div>
                         <p>Transforming homes with premium furniture since 2010. Quality, style, and comfort in every piece.</p>
                         <div className="footer-social">

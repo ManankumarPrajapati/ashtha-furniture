@@ -1,4 +1,4 @@
-import { Armchair, Award, Bed, ChefHat, Facebook, Heart, House, Instagram, Mail, MapPin, MoveLeft, MoveRight, Phone, Send, Shield, ShoppingBag, ShoppingCart, Star, Tags, Truck, Twitter, User, Youtube } from 'lucide-react';
+import { Armchair, Award, Bed, ChefHat, Facebook, Heart, House, Instagram, Mail, MapPin, MoveLeft, MoveRight, Phone, Quote, Send, Shield, ShoppingBag, ShoppingCart, Star, Tags, Truck, Twitter, User, Youtube } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react'
 import SofaImage from '../assets/Images/SofaImage.jpg'
 import hall from '../assets/Images/hall.jpg'
@@ -7,6 +7,7 @@ import bed from '../assets/Images/bed.jpg'
 import kitchen from '../assets/Images/kitchen.jpg'
 import dining from '../assets/Images/dining.jpg'
 import sofa from '../assets/Images/sofa.jpg'
+import Header from '../components/common/Header';
 
 const LandingPage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -14,6 +15,23 @@ const LandingPage = () => {
     const [cart, setCart] = useState([]);
     const [filter, setFilter] = useState("all");
     const slideIntervalRef = useRef(null);
+    const homeRef = useRef(null);
+    const aboutRef = useRef(null);
+    const servicesRef = useRef(null);
+    const contactRef = useRef(null);
+
+    const scrollToSection = (elementRef) => {
+        const headerOffset = 70; // adjust for sticky navbar
+        const elementPosition = elementRef.current.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+            block: 'nearest'
+        });
+    };
+
     const slides = [
         {
             name: "slide1",
@@ -92,6 +110,7 @@ const LandingPage = () => {
     };
 
 
+
     // Countdown
     const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
     useEffect(() => {
@@ -111,9 +130,9 @@ const LandingPage = () => {
 
     return (
         <>
+            <Header scrollToSection={scrollToSection} refs={{ homeRef, aboutRef, servicesRef, contactRef }} />
             <div className="landing_page">
-
-                <section id="hero" className="hero-slider">
+                <section id="hero" className="hero-slider" ref={homeRef}>
                     <div className="slider-container">
                         {slides.map((slide, index) => (
                             <div
@@ -253,6 +272,10 @@ const LandingPage = () => {
                                             <h3>Modern Sectional Sofa</h3>
                                             <div className="rating">
                                                 <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
                                                 <span>4.8 (234)</span>
                                             </div>
                                         </div>
@@ -287,6 +310,10 @@ const LandingPage = () => {
                                             <h3>Oak Dining Set</h3>
                                             <div className="rating">
                                                 <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
                                                 <span>4.9 (156)</span>
                                             </div>
                                         </div>
@@ -318,6 +345,10 @@ const LandingPage = () => {
                                             <h3>Luxury King Bed</h3>
                                             <div className="rating">
                                                 <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
                                                 <span>4.7 (89)</span>
                                             </div>
                                         </div>
@@ -338,7 +369,7 @@ const LandingPage = () => {
                         </div>
 
                         <div className="section-footer">
-                            <button className="btn btn-primary">
+                            <button className="btn filter-btn">
                                 View All Best Sellers <MoveRight />
                             </button>
                         </div>
@@ -407,7 +438,7 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-                <section id="sale" className="sale-section">
+                <section id="sale" className="sale-section" ref={aboutRef}>
                     <div className="sale-overlay"></div>
                     <div className="container">
                         <h2>MEGA SALE EVENT</h2>
@@ -434,7 +465,7 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-                <section id="feedback" className="feedback-section">
+                <section id="feedback" className="feedback-section" ref={servicesRef}>
                     <div className="container">
                         <div className="section-header">
                             <h2>What Our <span className="luxury-text">Customers</span> Say</h2>
@@ -443,14 +474,14 @@ const LandingPage = () => {
 
                         <div className="testimonials-grid">
                             <div className="testimonial-card">
-                                <i className="fas fa-quote-left quote-icon"></i>
-                                <p>"LuxeHome has the most beautiful furniture collection. The quality is exceptional and the customer service is outstanding."</p>
+                                <Quote />
+                                <p>"Astha has the most beautiful furniture collection. The quality is exceptional and the customer service is outstanding."</p>
                                 <div className="rating">
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
+                                    <Star />
+                                    <Star />
+                                    <Star />
+                                    <Star />
+                                    <Star />
                                 </div>
                                 <div className="testimonial-author">
                                     <div className="author-avatar">SJ</div>
@@ -462,14 +493,14 @@ const LandingPage = () => {
                             </div>
 
                             <div className="testimonial-card">
-                                <i className="fas fa-quote-left quote-icon"></i>
-                                <p>"I furnished my entire living room with LuxeHome. The delivery was prompt and the installation service was professional."</p>
+                                <Quote />
+                                <p>"I furnished my entire living room with Astha. The delivery was prompt and the installation service was professional."</p>
                                 <div className="rating">
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
+                                    <Star />
+                                    <Star />
+                                    <Star />
+                                    <Star />
+                                    <Star />
                                 </div>
                                 <div className="testimonial-author">
                                     <div className="author-avatar">MC</div>
@@ -481,14 +512,14 @@ const LandingPage = () => {
                             </div>
 
                             <div className="testimonial-card">
-                                <i className="fas fa-quote-left quote-icon"></i>
-                                <p>"I recommend LuxeHome to all my clients. Their furniture always helps properties sell faster with staged luxury."</p>
+                                <Quote />
+                                <p>"I recommend Astha to all my clients. Their furniture always helps properties sell faster with staged luxury."</p>
                                 <div className="rating">
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
-                                    <i className="fas fa-star"></i>
+                                    <Star />
+                                    <Star />
+                                    <Star />
+                                    <Star />
+                                    <Star />
                                 </div>
                                 <div className="testimonial-author">
                                     <div className="author-avatar">ER</div>
@@ -518,14 +549,14 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-                <section className="newsletter-section">
+                <section className="newsletter-section" ref={contactRef}>
                     <div className="container">
                         <h2>Stay Updated with Latest Collections</h2>
                         <p>Subscribe to our newsletter and be the first to know about new arrivals, exclusive offers, and design tips</p>
                         <div className="newsletter-form">
                             <input type="email" placeholder="Enter your email" />
                             <button className="btn btn-subscribe">
-                                <i className="fas fa-paper-plane"></i> Subscribe
+                                <Send /> Subscribe
                             </button>
                         </div>
                     </div>
@@ -566,7 +597,7 @@ const LandingPage = () => {
                                     </div>
                                     <div>
                                         <h4>Email Us</h4>
-                                        <p>hello@luxehome.com</p>
+                                        <p>hello@Astha.com</p>
                                     </div>
                                 </div>
 

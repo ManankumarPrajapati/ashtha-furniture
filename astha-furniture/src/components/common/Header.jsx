@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Armchair, Bed, ChefHat, House, Mail, MessageCircle, Phone, ShoppingCart, Tag } from 'lucide-react';
-const Header = () => {
+import logoImg from '../../assets/Images/Group1.png'
+const Header = ({ scrollToSection, refs }) => {
+
+    const [showMenu, setShowMenu] = useState(false)
 
     document.addEventListener('DOMContentLoaded', function () {
         const navbar = document.querySelector('.navbar');
@@ -58,23 +61,17 @@ const Header = () => {
         <nav className="navbar">
             <div className="nav-container">
                 <div className="nav-brand">
-                    {/* <div className="brand-icon">
-                        <i className="fas fa-home"></i>
-                    </div> */}
-                    <div className="brand-text">
-                        <h1>astha</h1>
-                        {/* <p>Furniture Studio</p> */}
-                    </div>
+                    <img src={logoImg} alt="astha" style={{ height: '40px' }} />
                 </div>
 
                 <div className="nav-links">
-                    <a href="#hero" className="nav-link"><House /> Home</a>
-                    <a href="#living" className="nav-link"><Armchair /> Living</a>
+                    <a href="#hero" className="nav-link" onClick={() => scrollToSection(refs.homeRef)} ><House /> Home</a>
+                    {/* <a href="#living" className="nav-link"><Armchair /> Living</a>
                     <a href="#bedroom" className="nav-link"><Bed /> Bedroom</a>
-                    <a href="#kitchen" className="nav-link"><ChefHat /> Kitchen</a>
-                    <a href="#sale" className="nav-link"><Tag /> Sale</a>
-                    <a href="#feedback" className="nav-link"><MessageCircle /> Feedback</a>
-                    <a href="#contact" className="nav-link"><Mail /> Contact</a>
+                    <a href="#kitchen" className="nav-link"><ChefHat /> Kitchen</a> */}
+                    <a href="#sale" className="nav-link" onClick={() => scrollToSection(refs.aboutRef)}><Tag /> Sale</a>
+                    <a href="#feedback" className="nav-link" onClick={() => scrollToSection(refs.servicesRef)}><MessageCircle /> Feedback</a>
+                    <a href="#contact" className="nav-link" onClick={() => scrollToSection(refs.contactRef)}><Mail /> Contact</a>
                 </div>
 
                 <div className="nav-actions">
@@ -85,24 +82,25 @@ const Header = () => {
                         <ShoppingCart /> Shop Now</button>
                 </div>
 
-                <button className="mobile-menu-btn">
-                    <i className="fas fa-bars"></i>
+                <button className="mobile-menu-btn" onClick={() => setShowMenu(!showMenu)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-text-align-justify-icon lucide-text-align-justify"><path d="M3 5h18" /><path d="M3 12h18" /><path d="M3 19h18" /></svg>
                 </button>
             </div>
 
-            <div className="mobile-menu">
+            {showMenu && <div className="mobile-menu">
                 <a href="#hero" className="mobile-link"><House /> Home</a>
-                <a href="#living" className="mobile-link"><Armchair /> Living</a>
+                {/* <a href="#living" className="mobile-link"><Armchair /> Living</a>
                 <a href="#bedroom" className="mobile-link"><Bed /> Bedroom</a>
-                <a href="#kitchen" className="mobile-link"><ChefHat /> Kitchen</a>
+                <a href="#kitchen" className="mobile-link"><ChefHat /> Kitchen</a> */}
                 <a href="#sale" className="mobile-link"><Tag /> Sale</a>
                 <a href="#feedback" className="mobile-link"><MessageCircle /> Feedback</a>
                 <a href="#contact" className="mobile-link"><Mail /> Contact</a>
-                <div className="mobile-actions">
+                {/* <div className="mobile-actions">
                     <button className="btn btn-outline">Call</button>
                     <button className="btn btn-primary">Shop</button>
-                </div>
-            </div>
+                </div> */}
+            </div>}
+
         </nav>
     )
 }
