@@ -5,9 +5,17 @@ import hall from '../assets/Images/hall.jpg'
 import bedroom from '../assets/Images/bedroom.jpg'
 import bed from '../assets/Images/bed.jpg'
 import kitchen from '../assets/Images/kitchen.jpg'
+import summerSale from '../assets/Images/LandingPage/mattress-online.png'
 import dining from '../assets/Images/dining.jpg'
 import sofa from '../assets/Images/sofa.jpg'
+import advertiseImage from '../assets/Images/LandingPage/discount-strip-1.jpg'
 import Header from '../components/common/Header';
+import HeroSection from './HeroSection';
+import ShopByCategory from './ShopByCategory';
+import '../assets/scss/heroSection.scss'
+import { RotateCcw, Headset } from "lucide-react";
+import FurnitureSlider from './FurnitureSlider';
+import FutureBrandSlider from './FutureBrandSlider';
 
 const LandingPage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,36 +40,6 @@ const LandingPage = () => {
         });
     };
 
-    const slides = [
-        {
-            name: "slide1",
-            discountName: 'Up to 40% OFF',
-            discountPara: 'Designer Bedroom Collection',
-            title: 'Transform Your Living Space',
-            description: 'Discover our exquisite range of handcrafted furniture that combines elegance with comfort. From modern minimalist to classic luxury.',
-            extra: 'Free Delivery & Installation',
-            image: SofaImage,
-        },
-        {
-            name: "slide2",
-            discountName: 'New Arrivals',
-            discountPara: 'Luxury Living Series',
-            title: 'Modern Comfort Redefined',
-            description: 'Experience the perfect blend of contemporary design and unmatched comfort with our premium furniture collections.',
-            extra: '24-Month Warranty',
-            image: hall,
-        },
-        {
-            name: "slide3",
-            discountName: 'Limited Edition',
-            discountPara: 'Designer Bedroom Collection',
-            title: 'Sleep in Style & Comfort',
-            description: 'Create your dream bedroom with our luxurious bed frames, wardrobes, and accessories designed for ultimate relaxation.',
-            extra: 'Custom Sizing Available',
-            image: bedroom,
-        }
-    ]; // replace with real data
-
     // Auto slide logic
     useEffect(() => {
         startAutoSlide();
@@ -81,108 +59,224 @@ const LandingPage = () => {
         if (slideIntervalRef.current) clearInterval(slideIntervalRef.current);
     };
 
+    const slidesData = [
+        {
+            id: 1,
+            tag: "NEW COLLECTION",
+            title: "Modern Living Room Sets",
+            desc: "Elevate your home with our premium furniture collection designed for comfort and style.",
+            img: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        },
+        {
+            id: 2,
+            tag: "LIMITED TIME",
+            title: "Premium Sofa Collection",
+            desc: "Experience unmatched comfort with our handcrafted sofas made from sustainable materials.",
+            img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        },
+        {
+            id: 3,
+            tag: "BEST SELLER",
+            title: "Minimalist Dining Experience",
+            desc: "Create the perfect dining space with our elegant and functional furniture pieces.",
+            img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        },
+    ];
 
-    const showSlide = (index) => {
-        setCurrentSlide(index);
-    };
 
+    // Auto slide every 5s
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % slidesData.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [slidesData.length]);
 
     const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setCurrentSlide((prev) => (prev + 1) % slidesData.length);
     };
-
 
     const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+        setCurrentSlide((prev) => (prev - 1 + slidesData.length) % slidesData.length);
     };
 
+    const [timeLeft, setTimeLeft] = useState({
+        days: "00",
+        hours: "00",
+        minutes: "00",
+        seconds: "00",
+    });
 
-    // Wishlist toggle
-    const toggleWishlist = (id) => {
-        setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
-    };
-
-
-    // Add to cart
-    const addToCart = (product) => {
-        setCart((prev) => [...prev, product]);
-        console.log("Added to cart:", product);
-    };
-
-
-
-    // Countdown
-    const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
     useEffect(() => {
-        const target = Date.now() + 48 * 60 * 60 * 1000;
+        // Set the date we're counting down to (3 days from now)
+        const countDownDate = new Date();
+        countDownDate.setDate(countDownDate.getDate() + 3);
+
         const timer = setInterval(() => {
-            const diff = target - Date.now();
-            if (diff > 0) {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            if (distance <= 0) {
+                clearInterval(timer);
                 setTimeLeft({
-                    hours: Math.floor(diff / (1000 * 60 * 60)),
-                    minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-                    seconds: Math.floor((diff % (1000 * 60)) / 1000),
+                    days: "00",
+                    hours: "00",
+                    minutes: "00",
+                    seconds: "00",
                 });
+                return;
             }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            const minutes = Math.floor(
+                (distance % (1000 * 60 * 60)) / (1000 * 60)
+            );
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            setTimeLeft({
+                days: days.toString().padStart(2, "0"),
+                hours: hours.toString().padStart(2, "0"),
+                minutes: minutes.toString().padStart(2, "0"),
+                seconds: seconds.toString().padStart(2, "0"),
+            });
         }, 1000);
+
         return () => clearInterval(timer);
     }, []);
+
 
     return (
         <>
             <Header scrollToSection={scrollToSection} refs={{ homeRef, aboutRef, servicesRef, contactRef }} />
             <div className="landing_page">
-                <section id="hero" className="hero-slider" ref={homeRef}>
+                <HeroSection />
+
+                <div className="hero-container">
+                    {/* Left Side - Slider */}
                     <div className="slider-container">
-                        {slides.map((slide, index) => (
-                            <div
-                                key={index}
-                                className={`slide ${currentSlide === index ? "active" : ""}`}
-                            >
-                                {/* {slide.name} */}
-                                <img src={slide.image} alt="Premium Collection" />
-                                <div className="slide-overlay"></div>
-                                <div className="slide-content">
-                                    <div className="offer-badge">
-                                        <Star />
-                                        <span>{slide.discountName}</span>
-                                    </div>
-                                    <p className="subtitle">{slide.discountPara}</p>
-                                    <h1>{slide.title}</h1>
-                                    <p className="description">{slide.description}</p>
-                                    <div className="featured">
-                                        <Star color='orange' />
-                                        <span>{slide.extra}</span>
-                                    </div>
-                                    <div className="slide-actions">
-                                        <button className="btn btn-luxury">
-                                            <ShoppingBag /> Shop Collection
-                                        </button>
-                                        <button className="btn btn-outline-white">
-                                            View Catalog <MoveRight />
-                                        </button>
+                        <div className="slider">
+                            {slidesData.map((slide, index) => (
+                                <div
+                                    key={slide.id}
+                                    className={`slide ${index === currentSlide ? "active" : ""}`}
+                                    style={{ backgroundImage: `url(${slide.img})` }}
+                                >
+                                    <div className="slide-content">
+                                        <span className="tag">{slide.tag}</span>
+                                        <h2>{slide.title}</h2>
+                                        <p>{slide.desc}</p>
+                                        <a href="#" className="btn btn-outline">
+                                            Shop Now
+                                        </a>
                                     </div>
                                 </div>
+                            ))}
+                        </div>
+
+                        {/* Navigation Arrows */}
+                        <div className="slider-nav">
+                            <button onClick={prevSlide}>
+                                <MoveLeft />
+                            </button>
+                            <button onClick={nextSlide}>
+                                <MoveRight />
+                            </button>
+                        </div>
+
+                        {/* Dots */}
+                        <div className="slider-controls">
+                            {slidesData.map((_, index) => (
+                                <button
+                                    key={index}
+                                    className={index === currentSlide ? "active" : ""}
+                                    onClick={() => setCurrentSlide(index)}
+                                ></button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Right Side */}
+                    <div className="right-side">
+                        <div className="product-showcase">
+                            <img src={SofaImage} alt="" />
+                            <div className="showcase-content">
+                                <h3>Summer Sale</h3>
+                                <p>Get up to 40% off on selected items. Limited time offer - don't miss out!</p>
+                                <a href="#" className="btn btn-primary">Explore Deals</a>
                             </div>
-                        ))}
+                        </div>
+
+                        <div className="product-showcase">
+                            <img src={summerSale} alt="Premium Collection" />
+                            <div className="showcase-content">
+                                <h3>Handcrafted Excellence</h3>
+                                <p>Discover our artisan collection</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <button className="slider-btn prev-btn">
-                        <MoveLeft />
-                    </button>
-                    <button className="slider-btn next-btn">
-                        <MoveRight />
-                    </button>
-
-                    <div className="slider-dots">
-                        <button className="dot active"></button>
-                        <button className="dot"></button>
-                        <button className="dot"></button>
+                <section className='advertisement-section'>
+                    <div className="sale-section">
+                        <h2 className="sale-heading">Sale Ends In</h2>
+                        <div className="timer">
+                            <div className="timer-unit">
+                                <div className="timer-value">{timeLeft.days}</div>
+                                <div className="timer-label">Days</div>
+                            </div>
+                            <div className="timer-unit">
+                                <div className="timer-value">{timeLeft.hours}</div>
+                                <div className="timer-label">Hours</div>
+                            </div>
+                            <div className="timer-unit">
+                                <div className="timer-value">{timeLeft.minutes}</div>
+                                <div className="timer-label">Minutes</div>
+                            </div>
+                            <div className="timer-unit">
+                                <div className="timer-value">{timeLeft.seconds}</div>
+                                <div className="timer-label">Seconds</div>
+                            </div>
+                        </div>
                     </div>
+                    <div className="why-choose-section">
+                        <div className="features-grid">
+                            <div className="feature-box">
+                                <div className="feature-icon">
+                                    <Truck size={32} />
+                                </div>
+                                <p className="feature-title">Free Shipping</p>
+                            </div>
 
-                    <div className="slide-counter">01 / 03</div>
+                            <div className="feature-box">
+                                <div className="feature-icon">
+                                    <Shield size={32} />
+                                </div>
+                                <p className="feature-title">Secure Payment</p>
+                            </div>
+
+                            <div className="feature-box">
+                                <div className="feature-icon">
+                                    <RotateCcw size={32} />
+                                </div>
+                                <p className="feature-title">Easy Returns</p>
+                            </div>
+
+                            <div className="feature-box">
+                                <div className="feature-icon">
+                                    <Headset size={32} />
+                                </div>
+                                <p className="feature-title">24/7 Support</p>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
+                <section className='advertisement-section'>
+                    <img src={advertiseImage} alt="" style={{ width: '100%' }} />
+                </section>
                 <section className="categories-section">
                     <div className="container">
                         <div className="section-header">
@@ -195,7 +289,7 @@ const LandingPage = () => {
                                 <House /> All Categories
                             </button>
                             <button className="filter-btn" data-category="living">
-                                <Armchair />Living Room
+                                <Armchair />Living
                             </button>
                             <button className="filter-btn" data-category="bedroom">
                                 <Bed /> Bedroom
@@ -203,51 +297,20 @@ const LandingPage = () => {
                             <button className="filter-btn" data-category="kitchen">
                                 <ChefHat /> Kitchen & Dining
                             </button>
+                            <button className="filter-btn" data-category="mattress">
+                                <Armchair />Mattress
+                            </button>
+                            <button className="filter-btn" data-category="decor">
+                                <Armchair />Decor
+                            </button>
                         </div>
+                        <ShopByCategory />
                     </div>
                 </section>
 
-                <section className="services-section">
-                    <div className="container">
-                        <div className="section-header">
-                            <h2>Why Choose <span className="luxury-text">astha</span></h2>
-                        </div>
+                <FurnitureSlider />
 
-                        <div className="services-grid">
-                            <div className="service-card">
-                                <div className="service-icon">
-                                    <Truck />
-                                </div>
-                                <h3>Free Delivery</h3>
-                                <p>Free delivery on orders over $500. Fast and reliable shipping nationwide.</p>
-                            </div>
-
-                            <div className="service-card">
-                                <div className="service-icon">
-                                    <Shield />
-                                </div>
-                                <h3>2 Year Warranty</h3>
-                                <p>Comprehensive warranty coverage on all furniture pieces for peace of mind.</p>
-                            </div>
-
-                            <div className="service-card">
-                                <div className="service-icon">
-                                    <Award />
-                                </div>
-                                <h3>Expert Craftsmanship</h3>
-                                <p>Handcrafted by skilled artisans using premium materials and techniques.</p>
-                            </div>
-
-                            <div className="service-card">
-                                <div className="service-icon">
-                                    <User />
-                                </div>
-                                <h3>Design Consultation</h3>
-                                <p>Free interior design consultation to help you create your perfect space.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <FutureBrandSlider />
 
                 <section id="bestsellers" className="bestsellers-section">
                     <div className="container">
@@ -438,33 +501,6 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-                <section id="sale" className="sale-section" ref={aboutRef}>
-                    <div className="sale-overlay"></div>
-                    <div className="container">
-                        <h2>MEGA SALE EVENT</h2>
-                        <p>Up to 50% off on selected furniture pieces</p>
-
-                        <div className="countdown">
-                            <div className="countdown-item">
-                                <div className="countdown-number">48</div>
-                                <div className="countdown-label">Hours</div>
-                            </div>
-                            <div className="countdown-item">
-                                <div className="countdown-number">12</div>
-                                <div className="countdown-label">Minutes</div>
-                            </div>
-                            <div className="countdown-item">
-                                <div className="countdown-number">35</div>
-                                <div className="countdown-label">Seconds</div>
-                            </div>
-                        </div>
-
-                        <button className="btn btn-sale">
-                            <Tags /> Shop Sale Items
-                        </button>
-                    </div>
-                </section>
-
                 <section id="feedback" className="feedback-section" ref={servicesRef}>
                     <div className="container">
                         <div className="section-header">
@@ -529,22 +565,6 @@ const LandingPage = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="brands-section">
-                    <div className="container">
-                        <h3>Trusted by Leading Brands</h3>
-                        <div className="brands-grid">
-                            <div className="brand">Herman Miller</div>
-                            <div className="brand">West Elm</div>
-                            <div className="brand">CB2</div>
-                            <div className="brand">Restoration Hardware</div>
-                            <div className="brand">Article</div>
-                            <div className="brand">IKEA</div>
-                            <div className="brand">Crate & Barrel</div>
-                            <div className="brand">Pottery Barn</div>
                         </div>
                     </div>
                 </section>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import './App.scss'
 import Footer from './components/common/Footer'
 import LandingPage from './pages/LandingPage'
 import ProductPage from './components/common/ProductPage'
