@@ -9,6 +9,7 @@
   background: white;
   padding: 0 1.5rem;
   position: relative;
+  border-radius: 10px;
 }
 .tab {
   padding: 8px 20px;
@@ -328,7 +329,6 @@
 }
 
 .advertisement-section {
-  margin: 30px 40px;
   display: flex;
   .sale-section {
     flex: 1;

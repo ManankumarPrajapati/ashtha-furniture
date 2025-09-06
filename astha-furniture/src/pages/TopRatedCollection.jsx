@@ -1,4 +1,5 @@
 import { MoveRight, Star } from "lucide-react";
+import React from "react";
 import '../assets/scss/slider.scss'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -6,9 +7,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation, Autoplay, EffectCoverflow } from "swiper/modules";
 
+const TopRatedCollection = () => {
 
-
-const FutureBrandSlider = () => {
     const cards = [
         {
             img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=500&q=80",
@@ -143,52 +143,52 @@ const FutureBrandSlider = () => {
     ];
 
     return (
-        <section className="section new-discover-container">
-            {/* Header Section */}
-            <div className="discover-header">
-                <div className="header-content">
-                    <h2>New Discoveries</h2>
-                    <p>
-                        Explore our latest collection of premium products designed to elevate
-                        your lifestyle. Each item is carefully curated for quality and style.
-                    </p>
+        <>
+            <section className="section new-discover-container top_rated_container">
+                {/* Header Section */}
+                <div className="discover-header">
+                    <div className="header-content">
+                        <h2>Top-Rated by Indian Homes</h2>
+                        <p>
+                            Crafted to complement Indian lifestyles
+                        </p>
+                    </div>
+                    <button className="view-all-btn">
+                        View All <MoveRight />
+                    </button>
                 </div>
-                <button className="view-all-btn">
-                    View All <MoveRight />
-                </button>
-            </div>
 
-            {/* Cards Carousel */}
-            <div className="cards-carousel">
-                <div className="carousel-wrapper">
-                    <Swiper
-                        effect="cube"
-                        grabCursor={true}
-                        centeredSlides={true}
-                        slidesPerView={4}
-                        spaceBetween={20}
-                        navigation
-                        centeredSlidesBounds={true}
-                        autoplay={{ delay: 3000, pauseOnMouseEnter: true }}
-                        modules={[Navigation, Autoplay, EffectCoverflow]}
-                        className="mySwiper"
-                        breakpoints={{
-                            640: { slidesPerView: 1 },
-                            768: { slidesPerView: 2 },
-                            1024: { slidesPerView: 3 }
-                        }}
-                    >
-                        {cards.map((card, i) => (
-                            <SwiperSlide className="card" key={i}>
-                                <div className="card-img">
-                                    <img src={card.img} alt={card.name} />
-                                    <div className="card-badge">{card.badge}</div>
-                                </div>
-                                <div className="card-content">
-                                    <h3 className="card-name">{card.name}</h3>
-                                    <div className="card-rating">
-                                        <div className="stars">
-                                            {/* {[1, 2, 3, 4, 5].map((star, idx) => (
+                {/* Cards Carousel */}
+                <div className="cards-carousel">
+                    <div className="carousel-wrapper">
+                        <Swiper
+                            effect="cube"
+                            grabCursor={true}
+                            centeredSlides={true}
+                            slidesPerView={4}
+                            spaceBetween={20}
+                            navigation
+                            centeredSlidesBounds={true}
+                            autoplay={{ delay: 3000, pauseOnMouseEnter: true }}
+                            modules={[Navigation, Autoplay, EffectCoverflow]}
+                            className="mySwiper"
+                            breakpoints={{
+                                640: { slidesPerView: 1 },
+                                768: { slidesPerView: 2 },
+                                1024: { slidesPerView: 3 }
+                            }}
+                        >
+                            {cards.map((card, i) => (
+                                <SwiperSlide className="card" key={i}>
+                                    <div className="card-img">
+                                        <img src={card.img} alt={card.name} />
+                                        <div className="card-badge">{card.badge}</div>
+                                    </div>
+                                    <div className="card-content">
+                                        <h3 className="card-name">{card.name}</h3>
+                                        <div className="card-rating">
+                                            <div className="stars">
+                                                {/* {[1, 2, 3, 4, 5].map((star, idx) => (
                                                 <i
                                                     key={idx}
                                                     className={
@@ -200,28 +200,29 @@ const FutureBrandSlider = () => {
                                                     }
                                                 ></i>
                                             ))} */}
-                                            <Star />
-                                            <Star />
-                                            <Star />
-                                            <Star />
-                                            <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
+                                                <Star />
+                                            </div>
+                                            <span className="rating-value">{card.stars}</span>
+                                            <span className="reviews">({card.reviews} reviews)</span>
                                         </div>
-                                        <span className="rating-value">{card.stars}</span>
-                                        <span className="reviews">({card.reviews} reviews)</span>
-                                    </div>
-                                    {/* <div className="card-price">
+                                        {/* <div className="card-price">
                                             <span className="current-price">{card.price}</span>
                                             <span className="original-price">{card.oldPrice}</span>
                                             <span className="discount">{card.discount}</span>
                                         </div> */}
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-            </div >
-        </section >
-    );
-};
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div >
+            </section >
+        </>
+    )
+}
 
-export default FutureBrandSlider;
+export default TopRatedCollection

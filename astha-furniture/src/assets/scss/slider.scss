@@ -1,9 +1,22 @@
+.swiper {
+  padding: 10px !important;
+  .swiper-button-next,
+  .swiper-button-prev {
+    border-radius: 4px;
+    background: #21385e;
+    width: 32px;
+    &::after {
+      font-size: 26px;
+      color: #fff;
+    }
+  }
+}
+
 .future-brand-container {
   background: white;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  margin: 30px 40px;
 
   .header-section {
     padding: 30px 40px 20px;
@@ -19,8 +32,7 @@
 
   .header-section p {
     color: #636e72;
-    line-height: 1.6;
-    max-width: 600px;
+    line-height: 1.2;
   }
 
   .image-carousel {
@@ -137,7 +149,7 @@
     color: white;
     border: none;
     padding: 8px 15px;
-    border-radius: 20px;
+    border-radius: var(--radius);
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
@@ -241,11 +253,10 @@
 }
 
 .new-discover-container {
-  background: white;
+  background: #ededed;
   border-radius: 16px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  margin: 30px 40px;
 
   .discover-header {
     padding: 35px 40px 25px;
@@ -279,21 +290,20 @@
     color: white;
     border: none;
     padding: 12px 25px;
-    border-radius: 30px;
+    border-radius: var(--radius);
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 102, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(162, 104, 27, 0.3);
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
   .view-all-btn:hover {
-    background: #0052cc;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(162, 104, 27, 0.3);
   }
 
   .cards-carousel {
@@ -427,7 +437,7 @@
   .carousel-btn {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: var(--radius);
     background: white;
     border: 2px solid #eee;
     display: flex;
@@ -435,13 +445,11 @@
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-card);
     padding: 4px;
   }
 
   .carousel-btn:hover {
-    background: #0066ff;
-    color: white;
-    border-color: #0066ff;
     transform: scale(1.1);
   }
 
@@ -491,4 +499,7 @@
       padding: 10px 20px;
     }
   }
+}
+.top_rated_container {
+  background: var(--white);
 }

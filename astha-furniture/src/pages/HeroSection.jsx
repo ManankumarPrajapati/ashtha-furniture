@@ -14,6 +14,7 @@ import {
     User,
     ArrowRight,
     Rocket,
+    MoveUpRight,
 } from "lucide-react";
 import '../assets/scss/heroSection.scss'
 
@@ -37,9 +38,7 @@ const HeroSection = () => {
     const [showMenu, setShowMenu] = useState(false);
     return (
         <div className="container">
-            <div
-                className="tabs-container"
-            >
+            <div className="tabs-container">
                 <div className="tabs">
                     {tabsData.map((tab) => (
                         <div
@@ -97,7 +96,10 @@ const HeroSection = () => {
                                     Our solutions are designed to help you work smarter, not harder.
                                     Explore our tools to streamline your workflow.
                                 </p>
-                                <a href="#" className="btn">Explore Features</a>
+                                <a href="#" className="btn btn-outline">
+                                    <MoveUpRight />
+                                    Explore Features
+                                </a>
                             </div>
                         </div>
                     </div>

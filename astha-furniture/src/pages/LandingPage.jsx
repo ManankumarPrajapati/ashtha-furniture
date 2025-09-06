@@ -16,6 +16,9 @@ import '../assets/scss/heroSection.scss'
 import { RotateCcw, Headset } from "lucide-react";
 import FurnitureSlider from './FurnitureSlider';
 import FutureBrandSlider from './FutureBrandSlider';
+import TopRatedCollection from './TopRatedCollection';
+import DecorSection from './DecorSection';
+import PoojaSection from './PoojaSection';
 
 const LandingPage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -154,7 +157,7 @@ const LandingPage = () => {
             <div className="landing_page">
                 <HeroSection />
 
-                <div className="hero-container">
+                <section className="section hero-container">
                     {/* Left Side - Slider */}
                     <div className="slider-container">
                         <div className="slider">
@@ -217,9 +220,9 @@ const LandingPage = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <section className='advertisement-section'>
+                <section className='section advertisement-section'>
                     <div className="sale-section">
                         <h2 className="sale-heading">Sale Ends In</h2>
                         <div className="timer">
@@ -277,7 +280,7 @@ const LandingPage = () => {
                 <section className='advertisement-section'>
                     <img src={advertiseImage} alt="" style={{ width: '100%' }} />
                 </section>
-                <section className="categories-section">
+                <section className="section categories-section">
                     <div className="container">
                         <div className="section-header">
                             <h2>Shop by <span className="luxury-text">Category</span></h2>
@@ -312,196 +315,14 @@ const LandingPage = () => {
 
                 <FutureBrandSlider />
 
-                <section id="bestsellers" className="bestsellers-section">
-                    <div className="container">
-                        <div className="section-header">
-                            <h2><span className="luxury-text">Best</span> Sellers</h2>
-                            <p>Our most popular furniture pieces loved by customers worldwide</p>
-                        </div>
+                <TopRatedCollection />
 
-                        <div className="products-grid">
-                            <div className="product-card">
-                                <div className="sale-badge">
-                                    <Tags /> Sale
-                                </div>
-                                <div className="product-image">
-                                    <img src={sofa} alt="Modern Sectional Sofa" />
-                                    <div className="image-overlay"></div>
-                                    <button className="quick-view-btn">Quick View</button>
-                                </div>
-                                <div className="product-info">
-                                    <div className="product-header">
-                                        <div>
-                                            <h3>Modern Sectional Sofa</h3>
-                                            <div className="rating">
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <span>4.8 (234)</span>
-                                            </div>
-                                        </div>
-                                        <button className="wishlist-btn">
-                                            <Heart />
-                                        </button>
-                                    </div>
-                                    <div className="product-footer">
-                                        <div className="price">
-                                            <span className="current-price">$1299</span>
-                                            <span className="original-price">$1699</span>
-                                        </div>
-                                        <button className="btn btn-primary">
-                                            <ShoppingCart /> Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                <PoojaSection />
 
-                            <div className="product-card">
-                                <div className="sale-badge">
-                                    <Tags /> Sale
-                                </div>
-                                <div className="product-image">
-                                    <img src={dining} alt="Oak Dining Set" />
-                                    <div className="image-overlay"></div>
-                                    <button className="quick-view-btn">Quick View</button>
-                                </div>
-                                <div className="product-info">
-                                    <div className="product-header">
-                                        <div>
-                                            <h3>Oak Dining Set</h3>
-                                            <div className="rating">
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <span>4.9 (156)</span>
-                                            </div>
-                                        </div>
-                                        <button className="wishlist-btn">
-                                            <Heart />
-                                        </button>
-                                    </div>
-                                    <div className="product-footer">
-                                        <div className="price">
-                                            <span className="current-price">$899</span>
-                                            <span className="original-price">$1199</span>
-                                        </div>
-                                        <button className="btn btn-primary">
-                                            <ShoppingCart /> Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                <DecorSection />
 
-                            <div className="product-card">
-                                <div className="product-image">
-                                    <img src={bed} alt="Luxury King Bed" />
-                                    <div className="image-overlay"></div>
-                                    <button className="quick-view-btn">Quick View</button>
-                                </div>
-                                <div className="product-info">
-                                    <div className="product-header">
-                                        <div>
-                                            <h3>Luxury King Bed</h3>
-                                            <div className="rating">
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <Star />
-                                                <span>4.7 (89)</span>
-                                            </div>
-                                        </div>
-                                        <button className="wishlist-btn">
-                                            <Heart />
-                                        </button>
-                                    </div>
-                                    <div className="product-footer">
-                                        <div className="price">
-                                            <span className="current-price">$1499</span>
-                                        </div>
-                                        <button className="btn btn-primary">
-                                            <ShoppingCart /> Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div className="section-footer">
-                            <button className="btn filter-btn">
-                                View All Best Sellers <MoveRight />
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="collections" className="collections-section">
-                    <div className="container">
-                        <div className="section-header">
-                            <h2>Explore Our <span className="gradient-text">Collections</span></h2>
-                            <p>Complete furniture solutions for every room in your home</p>
-                        </div>
-
-                        <div className="collections-grid">
-                            <div className="collection-card">
-                                <div className="collection-image">
-                                    <img src={sofa} alt="Luxury King Bed" />
-                                    <div className="collection-overlay"></div>
-                                    <div className="collection-info">
-                                        <h3>Living Room</h3>
-                                        <p>120 items</p>
-                                    </div>
-                                </div>
-                                <div className="collection-content">
-                                    <p>Comfortable sofas, chairs, and tables for relaxing spaces</p>
-                                    <button className="btn btn-primary">
-                                        Shop Living Room <MoveRight />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="collection-card">
-                                <div className="collection-image">
-                                    <img src={bed} alt="Luxury King Bed" />
-                                    <div className="collection-overlay"></div>
-                                    <div className="collection-info">
-                                        <h3>Bedroom</h3>
-                                        <p>85 items</p>
-                                    </div>
-                                </div>
-                                <div className="collection-content">
-                                    <p>Complete bedroom sets and individual pieces for restful sleep</p>
-                                    <button className="btn btn-primary">
-                                        Shop Bedroom <MoveRight />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="collection-card">
-                                <div className="collection-image">
-                                    <img src={kitchen} alt="Luxury King Bed" />
-                                    <div className="collection-overlay"></div>
-                                    <div className="collection-info">
-                                        <h3>Kitchen & Dining</h3>
-                                        <p>95 items</p>
-                                    </div>
-                                </div>
-                                <div className="collection-content">
-                                    <p>Dining tables, chairs, and kitchen storage solutions</p>
-                                    <button className="btn btn-primary">
-                                        Shop Kitchen & Dining <MoveRight />
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="feedback" className="feedback-section" ref={servicesRef}>
+                <section id="feedback" className="section feedback-section" ref={servicesRef}>
                     <div className="container">
                         <div className="section-header">
                             <h2>What Our <span className="luxury-text">Customers</span> Say</h2>
@@ -569,7 +390,7 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-                <section className="newsletter-section" ref={contactRef}>
+                <section className="section newsletter-section" ref={contactRef}>
                     <div className="container">
                         <h2>Stay Updated with Latest Collections</h2>
                         <p>Subscribe to our newsletter and be the first to know about new arrivals, exclusive offers, and design tips</p>
@@ -582,7 +403,7 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-                <section id="contact" className="contact-section">
+                <section id="contact" className="section contact-section">
                     <div className="container">
                         <div className="section-header">
                             <h2>Get in <span className="gradient-text">Touch</span></h2>

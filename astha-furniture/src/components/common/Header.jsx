@@ -78,8 +78,8 @@ const Header = ({ scrollToSection, refs }) => {
                     <button className="btn btn-outline">
                         <Phone /> Call Now
                     </button>
-                    <button className="btn btn-primary">
-                        <ShoppingCart /> Shop Now</button>
+                    {/* <button className="btn btn-primary">
+                        <ShoppingCart /> Shop Now</button> */}
                 </div>
 
                 <button className="mobile-menu-btn" onClick={() => setShowMenu(!showMenu)}>
